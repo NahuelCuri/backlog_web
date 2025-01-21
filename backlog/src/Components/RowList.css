@@ -1,0 +1,28 @@
+.rowList {
+    display: flex;
+    flex-direction: column; /* Aligns rows vertically */
+    justify-content: flex-start; /* Ensure rows start from the top */
+    align-items: center; /* Center rows horizontally */
+    /*height: 80vh;  Set height for the row list */
+    overflow-y: auto; /* Enable vertical scrolling */
+    width: 90vw; /* Set container width */
+    margin: 0 auto; /* Center the rowList horizontally */
+    padding-right: 10px; /* Optional: Add padding for better scroll space */
+    padding-bottom: 20px;
+}
+
+.rowListContainer {
+    flex: 1; /* Take up available space */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: flex-start; /* Align items to the top within this container */
+    margin-top: 50vh; /* Start from the middle of the viewport */
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0; /* Remove default body margin */
+    background-color: #f0f0f0; /* Just an example background */
+}
