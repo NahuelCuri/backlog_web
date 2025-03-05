@@ -2,13 +2,16 @@
 import './App.css';
 
 //import Row from './Components/Row';
-import RowList from './Components/RowList';
+import GameTable from './Components/GameTable';
 
 function App() {
+
+  
   return (
-    <>
-      <RowList numRows={5} /> 
-    </>
+    <div className="app">
+      <h1>Game List</h1>
+      <GameTable/> 
+    </div>
   );
 }
 

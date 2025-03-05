@@ -1,0 +1,57 @@
+/* src/components/GameTable.module.css */
+.tableWrapper {
+  width: 100%;
+  overflow-x: auto; /* Enables horizontal scrolling on small screens */
+}
+
+.table {
+  width: 60%; /* Occupies 60% of the screen space horizontally */
+  min-width: 800px; /* Ensures table doesn't shrink too much */
+  margin: 0 auto; /* Centers the table horizontally */
+  display: flex;
+  flex-direction: column;
+  background-color: #000; /* Dark background as seen in images, might get rid of this. */
+  padding: 20px;
+  border-radius: 12px; /* Rounded corners */
+}
+
+.emptyDiv{
+  padding-right: 40px;
+}
+
+.header {
+  display: flex;
+  background-color: #2e7d32; /* Green header */
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 20px;
+  font-size: larger;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+}
+
+.cell {
+  flex: 1; /* Allows cells to shrink equally */
+  padding: 12px;
+  text-align: left;
+  overflow-wrap: break-word; /* Wraps long text to prevent overflow */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .table {
+    width: 90%; /* Wider on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .table {
+    width: 100%; /* Full width on mobile */
+  }
+}
