@@ -9,6 +9,7 @@
 .collapsedContent {
   display: flex;
   align-items: center;
+  overflow: hidden;
 }
 
 .cell {
@@ -26,6 +27,19 @@
   padding-left: 0px;
   padding-right: 12px;
   flex: 0 0 auto;
+  gap: 8px; /* Espacio entre los botones */
+}
+
+.editButton {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0; /* Quitamos padding para mantener tamaño uniforme */
 }
 
 .expandButton {
@@ -34,28 +48,24 @@
   color: white;
   cursor: pointer;
   font-size: 16px;
-  margin-left: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0; /* Quitamos padding para mantener tamaño uniforme */
 }
 
 .expandedContent {
-  max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease-in-out;
-  background-color: #2a2a2a;
-  /*border: 1px solid #2e7d32;*/
-  border: none;
+  background-color: #3e3e3e;
   border-radius: 8px;
-  padding: 0 16px; /* Padding horizontal */
+  padding: 0 16px;
 }
 
 .expandedLayout {
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  padding: 16px 0; /* Solo padding vertical cuando está visible */
+  padding: 16px 0;
 }
 
 .textSection {
@@ -74,7 +84,6 @@
 .detailsList {
   display: flex;
   flex-direction: column;
-  gap: 8px;
 }
 
 .imageSection {

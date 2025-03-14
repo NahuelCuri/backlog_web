@@ -13,22 +13,21 @@ function GameTable() {
   useEffect(() => {
     const fetchGames = async () => {
       try {
-        // Replace 'http://your-backend-api.com/api/games' with your actual backend endpoint
         const response = await fetch('http://localhost:8080/api/games');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        setGames(data); // Update state with fetched data
+        setGames(data);
       } catch (error) {
-        setError(error.message); // Handle errors
+        setError(error.message); 
       } finally {
-        setLoading(false); // Stop loading
+        setLoading(false); 
       }
     };
 
     fetchGames();
-  }, []); // Empty dependency array ensures this runs only once on mount
+  }, []); 
 
   if (loading) {
     return <div className={styles.loading}>Loading games...</div>; // Optional loading state
@@ -51,6 +50,8 @@ function GameTable() {
           <div className={styles.cell}>Played Status</div>
           <div className={styles.cell}>Score</div>
           <div className={styles.emptyDiv}></div> {/* Empty cell to match the chevron */}
+          <div className={styles.emptyDiv}></div>
+          
         </div>
         {/* Data Rows */}
         <div className={styles.body}>
