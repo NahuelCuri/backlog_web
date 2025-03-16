@@ -23,7 +23,6 @@ public class Game {
 
     private String title;
     private String genre;
-    private LocalDate releaseDate;
     private int timePlayed;
     private int score;
     private String image;

@@ -40,11 +40,12 @@ function GameTable() {
   return (
     <div className={styles.tableWrapper}>
       <div className={styles.table}>
-        {/* Header Row */}
+        {/*  <div className={styles.cell}>Release Date</div> 
+            <div className={styles.cell}>{game.releaseDate || 'N/A'}</div>
+        */}
         <div className={styles.header}>
           <div className={styles.cell}>Game Title</div>
           <div className={styles.cell}>Genre</div>
-          <div className={styles.cell}>Release Date</div>
           <div className={styles.cell}>HLTB</div>
           <div className={styles.cell}>Time Played</div>
           <div className={styles.cell}>Played Status</div>

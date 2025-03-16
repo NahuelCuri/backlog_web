@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { FaChevronUp, FaChevronDown, FaEdit } from 'react-icons/fa'; // Añadimos FaEdit
+import { FaChevronUp, FaChevronDown, FaEdit } from 'react-icons/fa';
 import styles from './GameRow.module.css';
+import EditModal from './EditModal.jsx';
 
 const GameRow = ({ game }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [maxHeight, setMaxHeight] = useState('0px');
   const contentRef = useRef(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const animationDuration = 400; // 400ms = 0.4s, debe coincidir con el CSS
 
@@ -13,10 +15,13 @@ const GameRow = ({ game }) => {
     setIsExpanded(!isExpanded);
   };
 
-  // Función para manejar el clic en el botón de edición (puedes personalizarla)
   const onEdit = () => {
     console.log(`Editando el juego: ${game.title}`);
-    // Aquí puedes agregar la lógica de edición, como abrir un modal
+    setIsModalOpen(true); // Abrir el modal al hacer clic en el botón de edición
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
 
   useEffect(() => {
@@ -33,21 +38,21 @@ const GameRow = ({ game }) => {
   return (
     <div className={styles.row}>
       {/* Contenido colapsado */}
-      <div 
+      <div
         className={styles.collapsedContent}
-        style={{ 
+        style={{
           maxHeight: isExpanded ? '0px' : '50px',
           opacity: isExpanded ? 0 : 1,
           overflow: 'hidden',
-          transition: 'max-height 0.4s ease-in-out, opacity 0.4s ease-in-out'
+          transition: 'max-height 0.4s ease-in-out, opacity 0.4s ease-in-out',
         }}
       >
         <div className={styles.cell}>{game.title || 'N/A'}</div>
         <div className={styles.cell}>{game.genre || 'N/A'}</div>
-        <div className={styles.cell}>{game.releaseDate || 'N/A'}</div>
+        
         <div className={styles.cell}>{game.hltb || 'N/A'}</div>
         <div className={styles.cell}>{game.timePlayed || 'N/A'}</div>
-        <div className={styles.cell}>{game.playedStatus || 'N/A'}</div>
+        <div className={styles.cell}>{game.gameStatus || 'N/A'}</div>
         <div className={styles.cell}>{game.score || 'N/A'}</div>
         <div className={styles.expandCell}>
           <button onClick={onEdit} className={styles.editButton}>
@@ -63,10 +68,10 @@ const GameRow = ({ game }) => {
       <div
         ref={contentRef}
         className={styles.expandedContent}
-        style={{ 
+        style={{
           maxHeight,
           opacity: isExpanded ? 1 : 0,
-          transition: 'max-height 0.4s ease-in-out, opacity 0.4s ease-in-out'
+          transition: 'max-height 0.4s ease-in-out, opacity 0.4s ease-in-out',
         }}
       >
         <div className={styles.expandedLayout}>
@@ -74,10 +79,9 @@ const GameRow = ({ game }) => {
             <h2 className={styles.gameTitle}>{game.title || 'N/A'}</h2>
             <div className={styles.detailsList}>
               <p><strong>Genre:</strong> {game.genre || 'N/A'}</p>
-              <p><strong>Release Date:</strong> {game.releaseDate || 'N/A'}</p>
               <p><strong>HLTB:</strong> {game.hltb || 'N/A'}</p>
               <p><strong>Time Played:</strong> {game.timePlayed || 'N/A'}</p>
-              <p><strong>Played Status:</strong> {game.playedStatus || 'N/A'}</p>
+              <p><strong>Played Status:</strong> {game.gameStatus || 'N/A'}</p>
               <p><strong>Score:</strong> {game.score || 'N/A'}</p>
               <p><strong>Notes:</strong> {game.notes || 'N/A'}</p>
             </div>
@@ -99,6 +103,9 @@ const GameRow = ({ game }) => {
           </div>
         </div>
       </div>
+
+      {/* Renderizar el modal fuera del botón */}
+      {isModalOpen && <EditModal game={game} onClose={handleCloseModal} />}
     </div>
   );
 };

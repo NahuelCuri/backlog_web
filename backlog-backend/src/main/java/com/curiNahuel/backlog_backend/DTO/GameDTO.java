@@ -1,7 +1,5 @@
 package com.curiNahuel.backlog_backend.DTO;
 
-import java.time.LocalDate;
-
 import lombok.Data;
 
 @Data
@@ -10,7 +8,6 @@ public class GameDTO {
 
     private String title;
     private String genre;
-    private LocalDate releaseDate;
     private int timePlayed;
     private int hltb;
     private int score;
